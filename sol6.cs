@@ -17,28 +17,20 @@ public class Solution {
             result[sp++] = s[p];
             while (true) {
                 delta = m + k;
-                if (delta > 0 && p + delta < s.Length){
-                    p += delta;
-                    result[sp++] = s[p];
-                }
-                else if (p + delta >= s.Length) {
+                if (delta <= 0 || p + delta >= s.Length)
                     break;
-                }
-                
+                p += delta;
+                result[sp++] = s[p];
                 delta = (maxk - k) + (numRows - m);
-                if (delta > 0 && p + delta < s.Length){
-                    p += delta;
-                    result[sp++] = s[p];
-                }
-                else if (p + delta >= s.Length) {
+                if (delta <= 0 || p + delta >= s.Length)
                     break;
-                }
+                p += delta;
+                result[sp++] = s[p];
             }
-            
             k--;
             m--;
         }
         
-        return new string(result);
+        return new string(result, 0, sp);
     }
 }
