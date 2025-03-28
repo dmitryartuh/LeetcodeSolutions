@@ -8,14 +8,14 @@ class Solution:
         return val[0]
 
     def maxPoints(self, grid: List[List[int]], queries: List[int]) -> List[int]:
-        orderedQueries = numpy.full(len(queries), [int])
+        orderedQueries = [0] * len(queries)
         k = 0
         while k < len(queries):
             orderedQueries[k] = [queries[k], k]
             k += 1
         orderedQueries = sorted(orderedQueries, key=lambda x: x[0])
 
-        result = numpy.full(len(queries), int)
+        result = [0] * len(queries)
         h = []
         history = numpy.full((len(grid), len(grid[0])), False)
         heapq.heappush(h, (grid[0][0], 0, 0))
@@ -54,4 +54,4 @@ class Solution:
             result[current[1]] = count
             k += 1
 
-        return result{\rtf1}
+        return result
